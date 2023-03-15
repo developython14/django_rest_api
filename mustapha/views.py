@@ -51,3 +51,9 @@ def snippet_detail(request, pk):
     elif request.method == 'DELETE':
         snippet.delete()
         return HttpResponse(status=204)
+    
+
+def toma(request):
+    print('hado les informations')
+    print(request.REMOTE_HOST)
+    return HttpResponse('salam alikom')
