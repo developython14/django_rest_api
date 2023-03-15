@@ -55,5 +55,5 @@ def snippet_detail(request, pk):
 
 def toma(request):
     print('hado les informations')
-    print(request.REMOTE_HOST)
+    print(request.headers['User-Agent'])
     return HttpResponse('salam alikom')
