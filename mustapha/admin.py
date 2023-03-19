@@ -4,9 +4,10 @@ from .models import Person ,Cours
 
 
 class AuthorAdmin(admin.ModelAdmin):
-    list_display = ('first_name', 'last_name')
+    list_display = ('first_name', 'last_name' , )
     search_fields = ['first_name' ,  'last_name']
     list_filter  =  ['first_name' ]
+    filter_horizontal = ('Cours',)
 
 
 admin.site.register(Person ,AuthorAdmin )
