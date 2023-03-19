@@ -19,10 +19,22 @@ class Snippet(models.Model):
         ordering = ['created']
 
 
+
+class Cours(models.Model):
+    title = models.CharField(max_length=30)
+    
+
+    def __str__(self) -> str:
+        return self.title 
+
+
 class Person(models.Model):
     first_name = models.CharField(max_length=30)
     last_name = models.CharField(max_length=30)
+    Cours = models.ManyToManyField(Cours)
     
 
     def __str__(self) -> str:
         return self.first_name + self.last_name
+
+
