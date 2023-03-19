@@ -3,4 +3,9 @@ from .models import Person
 # Register your models here.
 
 
-admin.site.register(Person)
+class AuthorAdmin(admin.ModelAdmin):
+    list_display = ('first_name', 'last_name')
+    search_fields = ['first_name']
+
+
+admin.site.register(Person ,AuthorAdmin )
