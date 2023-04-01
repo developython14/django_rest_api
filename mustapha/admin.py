@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Person ,Cours ,Snippet
+from .models import Person ,Cours ,Snippet,Stories
 # Register your models here.
 
 
@@ -14,3 +14,4 @@ admin.site.register(Person ,AuthorAdmin )
 
 admin.site.register(Cours )
 admin.site.register(Snippet )
+admin.site.register(Stories )

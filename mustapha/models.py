@@ -38,3 +38,19 @@ class Person(models.Model):
         return self.first_name + self.last_name
 
 
+
+
+class Stories(models.Model):
+    SHIRT_SIZES = (
+        ('S', 'Small'),
+        ('M', 'Medium'),
+        ('L', 'Large'),
+    )
+    title = models.CharField(max_length=30)
+    last_name = models.CharField(max_length=30 ,choices=SHIRT_SIZES)
+    
+
+    def __str__(self) -> str:
+        return  self.title
+
+
