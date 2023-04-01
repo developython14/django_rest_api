@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Person ,Cours
+from .models import Person ,Cours ,Snippet
 # Register your models here.
 
 
@@ -13,3 +13,4 @@ class AuthorAdmin(admin.ModelAdmin):
 admin.site.register(Person ,AuthorAdmin )
 
 admin.site.register(Cours )
+admin.site.register(Snippet )
