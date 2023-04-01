@@ -1,6 +1,7 @@
 from django.db import models
 from pygments.lexers import get_all_lexers
 from pygments.styles import get_all_styles
+from django import forms
 
 LEXERS = [item for item in get_all_lexers() if item[1]]
 LANGUAGE_CHOICES = sorted([(item[1][0], item[0]) for item in LEXERS])
@@ -46,8 +47,9 @@ class Stories(models.Model):
         ('M', 'Medium'),
         ('L', 'Large'),
     )
-    title = models.CharField(max_length=30)
+    title = models.CharField(max_length=30 )
     last_name = models.CharField(max_length=30 ,choices=SHIRT_SIZES)
+    file = forms.FileField()
     
 
     def __str__(self) -> str:
