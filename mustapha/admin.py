@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Person ,Cours ,Snippet,Stories
+from .models import *
 # Register your models here.
 
 
@@ -10,8 +10,25 @@ class AuthorAdmin(admin.ModelAdmin):
     filter_horizontal = ('Cours',)
 
 
-admin.site.register(Person ,AuthorAdmin )
+class fillierAdmin(admin.TabularInline):
+    model = fillier
 
-admin.site.register(Cours )
-admin.site.register(Snippet )
-admin.site.register(Stories )
+
+class niveauAdmin(admin.ModelAdmin):
+    inlines = [
+        fillierAdmin,
+    ]
+
+
+class module_fillier(admin.TabularInline):
+    model = matier
+
+class fillier_m_admin(admin.ModelAdmin):
+    inlines = [
+        module_fillier,
+    ]
+
+
+admin.site.register(Niveau , niveauAdmin )
+admin.site.register(fillier , fillier_m_admin )
+admin.site.register(matier  )
