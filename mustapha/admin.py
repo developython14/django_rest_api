@@ -20,7 +20,7 @@ class niveauAdmin(admin.ModelAdmin):
     ]
 
 
-class module_fillier(admin.TabularInline):
+class module_fillier(admin.StackedInline):
     model = matier
 
 class fillier_m_admin(admin.ModelAdmin):

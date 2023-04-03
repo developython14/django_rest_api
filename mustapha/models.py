@@ -32,6 +32,14 @@ class matier(models.Model):
     def __str__(self) -> str:
         return self.title
 
+class chapitre(models.Model):
+    created = models.DateTimeField(auto_now_add=True)
+    title = models.CharField(max_length=100, blank=True, default='')
+    fillier = models.ForeignKey(fillier, on_delete=models.CASCADE)
+    def __str__(self) -> str:
+        return self.title
+
+
     class Meta:
         ordering = ['created']
 
