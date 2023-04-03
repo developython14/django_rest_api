@@ -25,6 +25,12 @@ class niveauAdmin(admin.ModelAdmin):
 
 class module_fillier(admin.TabularInline):
     model = matier
+    list_display = ('title' ,'chapitre' ,'pdf','video' ,'free')
+    list_display_links = ('title','free' ,)
+    search_fields = ('chapitre',)
+
+    def free(self,obj):
+        return '<a>rer</a>'
     
 
 class fillier_m_admin(admin.ModelAdmin):
@@ -38,13 +44,20 @@ class chapitre_ad(admin.ModelAdmin):
     list_display = ('title' ,)
 
 class cour_admin(admin.ModelAdmin):
-    list_display = ('title' ,'chapitre' ,'pdf','video' ,'free' )
-    list_display_links = ('title',)
+    list_display = ('title' ,'chapitre' ,'pdf','video' ,'free')
+    list_display_links = ('title','free' ,)
     search_fields = ('chapitre',)
 
     def free(self,obj):
-        return ''
+        return '<a>rer</a>'
 
+
+class group_ad(admin.ModelAdmin):
+    list_display = ('name' ,'link')
+    list_display_links = ('name' ,'link')
+
+    def link(self,obj):
+        return ''
 
 admin.site.register(Niveau , niveauAdmin )
 admin.site.register(fillier , fillier_m_admin )
@@ -52,6 +65,6 @@ admin.site.register(matier  )
 admin.site.register(cour  ,cour_admin)
 admin.site.register(chapitre ,chapitre_ad )
 
-admin.site.register(Person)
-admin.site.register(Group)
+admin.site.register(Person )
+admin.site.register(Group ,group_ad)
 admin.site.register(Membership)
