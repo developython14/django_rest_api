@@ -35,7 +35,16 @@ class matier(models.Model):
 class chapitre(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     title = models.CharField(max_length=100, blank=True, default='')
-    fillier = models.ForeignKey(fillier, on_delete=models.CASCADE)
+    matier = models.ForeignKey(matier, on_delete=models.CASCADE)
+    def __str__(self) -> str:
+        return self.title
+
+class cour(models.Model):
+    created = models.DateTimeField(auto_now_add=True)
+    title = models.CharField(max_length=100, blank=True, default='')
+    video = models.CharField(max_length=100, blank=True, default='')
+    pdf = models.CharField(max_length=100, blank=True, default='')
+    chapitre = models.ForeignKey(chapitre, on_delete=models.CASCADE)
     def __str__(self) -> str:
         return self.title
 

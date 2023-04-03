@@ -32,3 +32,6 @@ class fillier_m_admin(admin.ModelAdmin):
 admin.site.register(Niveau , niveauAdmin )
 admin.site.register(fillier , fillier_m_admin )
 admin.site.register(matier  )
+admin.site.register(cour  )
+admin.site.register(chapitre  )
+
