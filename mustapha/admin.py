@@ -1,6 +1,7 @@
 from django.contrib import admin
 from .models import *
 # Register your models here.
+from django.urls import reverse
 
 
 class AuthorAdmin(admin.ModelAdmin):
@@ -12,16 +13,19 @@ class AuthorAdmin(admin.ModelAdmin):
 
 class fillierAdmin(admin.TabularInline):
     model = fillier
+    list_display_links = ('title',)
 
 
 class niveauAdmin(admin.ModelAdmin):
     inlines = [
         fillierAdmin,
+        
     ]
 
 
 class module_fillier(admin.TabularInline):
     model = matier
+    
 
 class fillier_m_admin(admin.ModelAdmin):
     inlines = [
@@ -34,9 +38,12 @@ class chapitre_ad(admin.ModelAdmin):
     list_display = ('title' ,)
 
 class cour_admin(admin.ModelAdmin):
-    list_display = ('title' ,'chapitre' ,'pdf','video' )
+    list_display = ('title' ,'chapitre' ,'pdf','video' ,'free' )
     list_display_links = ('title',)
     search_fields = ('chapitre',)
+
+    def free(self,obj):
+        return ''
 
 
 admin.site.register(Niveau , niveauAdmin )
