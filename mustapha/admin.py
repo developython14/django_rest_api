@@ -20,7 +20,7 @@ class niveauAdmin(admin.ModelAdmin):
     ]
 
 
-class module_fillier(admin.StackedInline):
+class module_fillier(admin.TabularInline):
     model = matier
 
 class fillier_m_admin(admin.ModelAdmin):
@@ -34,7 +34,8 @@ class chapitre_ad(admin.ModelAdmin):
     list_display = ('title' ,)
 
 class cour_admin(admin.ModelAdmin):
-    list_display = ('title' ,'chapitre' )
+    list_display = ('title' ,'chapitre' ,'pdf','video' )
+    list_display_links = ('title',)
     search_fields = ('chapitre',)
 
 
@@ -44,3 +45,6 @@ admin.site.register(matier  )
 admin.site.register(cour  ,cour_admin)
 admin.site.register(chapitre ,chapitre_ad )
 
+admin.site.register(Person)
+admin.site.register(Group)
+admin.site.register(Membership)
