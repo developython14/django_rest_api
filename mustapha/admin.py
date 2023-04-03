@@ -27,16 +27,20 @@ class fillier_m_admin(admin.ModelAdmin):
     inlines = [
         module_fillier,
     ]
+    
 
 
 class chapitre_ad(admin.ModelAdmin):
     list_display = ('title' ,)
 
+class cour_admin(admin.ModelAdmin):
+    list_display = ('title' ,'chapitre' )
+    search_fields = ('chapitre',)
 
 
 admin.site.register(Niveau , niveauAdmin )
 admin.site.register(fillier , fillier_m_admin )
 admin.site.register(matier  )
-admin.site.register(cour  )
+admin.site.register(cour  ,cour_admin)
 admin.site.register(chapitre ,chapitre_ad )
 
