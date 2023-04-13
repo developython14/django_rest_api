@@ -49,9 +49,6 @@ class cour(models.Model):
         return self.title
 
 
-    class Meta:
-        ordering = ['created']
-
 
 
 
