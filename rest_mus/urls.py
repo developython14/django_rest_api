@@ -10,6 +10,6 @@ urlpatterns = [
     path('', include(router.urls)),
     path('contacts/', contactList.as_view()),
     path('contatcs/<int:pk>/', contactDetail.as_view()),
-      path('snippets/', SnippetList.as_view()),
+    path('snippets/', SnippetList.as_view()),
     path('snippets/<int:pk>/', SnippetDetail.as_view()),
 ]
