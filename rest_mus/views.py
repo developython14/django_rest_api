@@ -108,3 +108,13 @@ class SnippetDetail(APIView):
         snippet = self.get_object(pk)
         snippet.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
+    
+
+
+class crebview(viewsets.ModelViewSet):
+    """
+    API endpoint that allows groups to be viewed or edited.
+    """
+    queryset = contact.objects.all()
+    serializer_class = ContactSerializer
+    permission_classes = [permissions.AllowAny]
