@@ -17,7 +17,7 @@ class story(models.Model):
 class story_image(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     image = models.ImageField(upload_to='image_stories', default='')
-    story = models.ForeignKey(story)
+    story = models.ForeignKey(story ,on_delete=models.CASCADE)
 
 
 
