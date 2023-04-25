@@ -8,6 +8,7 @@ from django.http import HttpResponse
 from .serializers import *
 from django.http import Http404
 from .models import *
+from rest_framework import generics
 
 
 from .serializers import *
@@ -31,3 +32,14 @@ class story_image_view(viewsets.ModelViewSet):
     queryset = story_image.objects.all()
     serializer_class = story_image_serializer
     permission_classes = [permissions.AllowAny]
+
+
+
+class StoryList(generics.ListCreateAPIView):
+    queryset = story.objects.all()
+    serializer_class = storySerializer
+
+
+class StoryDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = story.objects.all()
+    serializer_class = storySerializer

@@ -10,4 +10,7 @@ router.register(r'stories_images', story_image_view)
 
 urlpatterns = [
     path('', include(router.urls)),
+        path('story/', StoryList.as_view()),
+    path('story/<int:pk>/', StoryDetail.as_view()),
+
 ]

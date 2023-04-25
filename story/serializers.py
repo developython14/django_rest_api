@@ -14,7 +14,7 @@ class story_image_serializer(serializers.HyperlinkedModelSerializer):
 
 class storySerializer(serializers.HyperlinkedModelSerializer):
     id = serializers.IntegerField(read_only=True)
-    storiess = serializers.HyperlinkedRelatedField(many=True, view_name='snippet-detail', read_only=True)
+    storiess = serializers.HyperlinkedRelatedField(many=True, view_name='story_image-detail', read_only=True)
     class Meta:
         model = story
         fields = ['id','created', 'page_de_garde', 'storiess']
