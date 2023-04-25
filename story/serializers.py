@@ -13,7 +13,7 @@ class story_image_serializer(serializers.HyperlinkedModelSerializer):
 
 class storySerializer(serializers.HyperlinkedModelSerializer):
     id = serializers.IntegerField(read_only=True)
-    tracks = serializers.StringRelatedField(many=True)
+    snippets = serializers.PrimaryKeyRelatedField(many=True, queryset=story_image.objects.all() ,allow_null=True)
     class Meta:
         model = story
         fields = ['id','created', 'page_de_garde', 'order' , 'snippets']
