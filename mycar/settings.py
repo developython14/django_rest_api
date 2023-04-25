@@ -136,3 +136,16 @@ REST_FRAMEWORK = {
 }
 
 APPEND_SLASH=False
+CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOW_CREDENTIALS = True
+
+CORS_ALLOW_HEADERS = (
+    'content-disposition', 
+    'accept-encoding', 
+    'content-type', 
+    'accept', 
+    'origin', 
+    'authorization',
+    'cache-control'
+)
+

@@ -17,7 +17,8 @@ class story(models.Model):
 
 class story_image(models.Model):
     created = models.DateTimeField(auto_now_add=True)
-    story = models.IntegerField(default=0)
+    story = models.ForeignKey(story)
+    
 
 
 
