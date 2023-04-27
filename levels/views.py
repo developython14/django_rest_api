@@ -8,9 +8,12 @@ from django.views.decorators.csrf import csrf_exempt
 # Create levels views here.
 
 def get_levels( request):
-    people = levels.objects.all().values()
-    people = list(people)
-    return JsonResponse(people ,safe=False)
+    _levels = levels.objects.all().values()
+    _levels = list(_levels)
+    for lev in _levels :
+        id = lev['id']
+        lev['filliere'] = get_filliers(id)
+    return JsonResponse(_levels ,safe=False)
 
 
 @csrf_exempt
@@ -61,13 +64,7 @@ def delete_levels(request):
 def get_filliers(id):
     people = Filieres.objects.all().values().filter(id=id)
     people = list(people)
-    return JsonResponse(people ,safe=False)
-
-    created = models.DateTimeField(auto_now_add=True)
-    order = models.IntegerField(default=0)
-    title = models.CharField(max_length=100,unique=True )
-    abre = models.CharField(max_length=5, blank=True, default='')
-    level = models.ForeignKey(levels , blank=True , on_delete=models.CASCADE)
+    return people
 
 @csrf_exempt
 def post_filieres(request):
