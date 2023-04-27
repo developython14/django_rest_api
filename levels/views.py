@@ -62,7 +62,8 @@ def delete_levels(request):
 # Create filliere views here.
 
 def get_filliers(id):
-    people = Filieres.objects.all().values().filter(id=id)
+    _level = levels.objects.all().filter(id=id)[0]
+    people = Filieres.objects.all().values().filter(level=_level)
     people = list(people)
     return people
 
@@ -76,13 +77,11 @@ def post_filieres(request):
     id = data['level_id']
     _level = levels.objects.all().filter(id=id)[0]
     new = Filieres(title = title , abre =abre , order = order, level = _level)
-    print('here')
-    print(new.level)
     new.save()
     return HttpResponse("updated succeffluy")
 
 @csrf_exempt
-def put_levels(request):
+def put_filieres(request):
     data = request.POST
     id  = data['id']
     try : 
@@ -101,7 +100,7 @@ def put_levels(request):
     return HttpResponse("updated succeffluy")
 
 @csrf_exempt
-def delete_levels(request):
+def delete_filieres(request):
     data = request.POST
     id  = data['id']
     try : 

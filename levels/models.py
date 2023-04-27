@@ -11,6 +11,9 @@ class levels(models.Model):
     title = models.CharField(max_length=100,unique=True )
     abre = models.CharField(max_length=5, blank=True, default='')
 
+    def __str__(self) -> str:
+        return self.title
+
 
     class Meta:
         ordering = ['order']
@@ -24,6 +27,9 @@ class Filieres(models.Model):
     title = models.CharField(max_length=100,unique=True )
     abre = models.CharField(max_length=5, blank=True, default='')
     level = models.ForeignKey(levels , blank=True , on_delete=models.CASCADE)
+
+    def __str__(self) -> str:
+        return self.title +'ha'+ str(self.level.id)
 
     class Meta:
         ordering = ['order']
