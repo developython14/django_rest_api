@@ -19,3 +19,5 @@ class storySerializer(serializers.HyperlinkedModelSerializer):
         fields = ['id','created', 'page_de_garde', 'order' , 'snippets']
 
 
+
+

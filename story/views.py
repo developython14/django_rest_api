@@ -33,13 +33,4 @@ class story_image_view(viewsets.ModelViewSet):
     serializer_class = story_image_serializer
     permission_classes = [permissions.AllowAny]
 
-
-
-class StoryList(generics.ListCreateAPIView):
-    queryset = story.objects.all()
-    serializer_class = storySerializer
-
-
-class StoryDetail(generics.RetrieveUpdateDestroyAPIView):
-    queryset = story.objects.all()
-    serializer_class = storySerializer
+    
