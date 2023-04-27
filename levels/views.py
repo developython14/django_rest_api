@@ -26,11 +26,20 @@ def post_levels( request):
 
 @csrf_exempt
 def put_levels(request):
-    print('put data')
-    people = levels.objects.all().filter(id=1).update(title= request.POST['title'])
-    print('hadi peopla' , people)
     data = request.POST
-    print(data)
+    id  = data['id']
+    try : 
+        people = levels.objects.all().filter(id=id).update(title= request.POST['title'])
+    except:
+        pass
+    try : 
+        people = levels.objects.all().filter(id=id).update(order= request.POST['order'])
+    except:
+        pass
+    try : 
+        people = levels.objects.all().filter(id=id).update(abre= request.POST['abre'])
+    except:
+        pass
     # <view logic>
-    return HttpResponse("result")
+    return HttpResponse("updated succeffluy")
     
