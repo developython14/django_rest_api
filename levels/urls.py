@@ -16,3 +16,12 @@ urlpatterns +=[
     path('put_filiere/',put_filieres, name="post_filiere"),
     path('delete_filiere/',delete_filieres, name="delete_filiere"),
 ]
+
+
+
+#url patterfn about modulesss
+urlpatterns +=[
+    path('post_modules/',post_filieres, name="post_modules"),
+    path('put_modules/',put_modules, name="put_modules"),
+    path('delete_modules/',delete_modules, name="delete_modules"),
+]
