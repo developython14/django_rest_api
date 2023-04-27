@@ -33,3 +33,14 @@ class Filieres(models.Model):
 
     class Meta:
         ordering = ['order']
+
+
+
+class Modules(models.Model):
+    created = models.DateTimeField(auto_now_add=True)
+    title = models.CharField(max_length=100,unique=True )
+    abre = models.CharField(max_length=5, blank=True, default='')
+    filiere = models.ForeignKey(Filieres , blank=True , on_delete=models.CASCADE)
+
+    def __str__(self) -> str:
+        return self.title +'ha'+ str(self.title)

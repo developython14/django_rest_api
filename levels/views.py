@@ -85,15 +85,15 @@ def put_filieres(request):
     data = request.POST
     id  = data['id']
     try : 
-        people = levels.objects.all().filter(id=id).update(title= request.POST['title'])
+        people = Filieres.objects.all().filter(id=id).update(title= request.POST['title'])
     except:
         pass
     try : 
-        people = levels.objects.all().filter(id=id).update(order= request.POST['order'])
+        people = Filieres.objects.all().filter(id=id).update(order= request.POST['order'])
     except:
         pass
     try : 
-        people = levels.objects.all().filter(id=id).update(abre= request.POST['abre'])
+        people = Filieres.objects.all().filter(id=id).update(abre= request.POST['abre'])
     except:
         pass
     # <view logic>
@@ -104,7 +104,7 @@ def delete_filieres(request):
     data = request.POST
     id  = data['id']
     try : 
-        people = levels.objects.all().filter(id=id).delete()
+        people = Filieres.objects.all().filter(id=id).delete()
     except:
         pass
     # <view logic>
