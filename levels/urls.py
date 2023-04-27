@@ -21,7 +21,7 @@ urlpatterns +=[
 
 #url patterfn about modulesss
 urlpatterns +=[
-    path('post_modules/',post_filieres, name="post_modules"),
+    path('post_modules/',post_modules, name="post_modules"),
     path('put_modules/',put_modules, name="put_modules"),
     path('delete_modules/',delete_modules, name="delete_modules"),
 ]
