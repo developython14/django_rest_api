@@ -12,8 +12,7 @@ urlpatterns =[
 
 #url patterfn about fillierss
 urlpatterns +=[
-    path('filliers/',get_levels, name="filiers"),
-    path('post_filiere/',post_levels, name="post_filiere"),
+    path('post_filiere/',post_filieres, name="post_filiere"),
     path('put_filiere/',put_levels, name="post_filiere"),
     path('delete_filiere/',delete_levels, name="delete_filiere"),
 ]

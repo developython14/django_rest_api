@@ -13,6 +13,8 @@ def get_levels( request):
     for lev in _levels :
         id = lev['id']
         lev['filliere'] = get_filliers(id)
+        print('hado get fill ')
+        print(get_filliers(id))
     return JsonResponse(_levels ,safe=False)
 
 
@@ -74,8 +76,9 @@ def post_filieres(request):
     title = data['title']
     abre = data['abre']
     id = data['level_id']
-    _level = levels.objects.all().filter(id=id)
+    _level = levels.objects.all().filter(id=id)[0]
     new = Filieres(title = title , abre =abre , order = order, level = _level)
+    print(new.level)
     new.save()
     return HttpResponse("updated succeffluy")
 
