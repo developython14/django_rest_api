@@ -58,20 +58,27 @@ def delete_levels(request):
 
 # Create filliere views here.
 
-def get_filliers( request):
-    people = Filieres.objects.all().values()
+def get_filliers(id):
+    people = Filieres.objects.all().values().filter(id=id)
     people = list(people)
     return JsonResponse(people ,safe=False)
 
+    created = models.DateTimeField(auto_now_add=True)
+    order = models.IntegerField(default=0)
+    title = models.CharField(max_length=100,unique=True )
+    abre = models.CharField(max_length=5, blank=True, default='')
+    level = models.ForeignKey(levels , blank=True , on_delete=models.CASCADE)
 
 @csrf_exempt
-def post_levels( request):
+def post_filieres(request):
         # <view logic>
     data = request.POST
     order = data['order']
     title = data['title']
     abre = data['abre']
-    new = levels(title = title , abre =abre , order = order)
+    id = data['level_id']
+    _level = levels.objects.all().filter(id=id)
+    new = Filieres(title = title , abre =abre , order = order, level = _level)
     new.save()
     return HttpResponse("updated succeffluy")
 
