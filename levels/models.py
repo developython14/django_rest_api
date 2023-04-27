@@ -39,7 +39,7 @@ class Filieres(models.Model):
 class Modules(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     title = models.CharField(max_length=100,unique=True )
-    abre = models.CharField(max_length=5, blank=True, default='')
+    icon_title = models.ImageField(upload_to='modules_icon')
     filiere = models.ForeignKey(Filieres , blank=True , on_delete=models.CASCADE)
 
     def __str__(self) -> str:

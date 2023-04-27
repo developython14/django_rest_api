@@ -110,3 +110,58 @@ def delete_filieres(request):
     # <view logic>
     return HttpResponse("deleted succeffluy")
     
+
+
+
+# Create modules views here.
+
+
+def get_modules(id):
+    _level = levels.objects.all().filter(id=id)[0]
+    people = Filieres.objects.all().values().filter(level=_level)
+    people = list(people)
+    return people
+
+@csrf_exempt
+def post_modules(request):
+        # <view logic>
+    data = request.POST
+    order = data['order']
+    title = data['title']
+    abre = data['abre']
+    id = data['level_id']
+    _level = levels.objects.all().filter(id=id)[0]
+    new = Filieres(title = title , abre =abre , order = order, level = _level)
+    new.save()
+    return HttpResponse("updated succeffluy")
+
+@csrf_exempt
+def put_modules(request):
+    data = request.POST
+    id  = data['id']
+    try : 
+        people = Filieres.objects.all().filter(id=id).update(title= request.POST['title'])
+    except:
+        pass
+    try : 
+        people = Filieres.objects.all().filter(id=id).update(order= request.POST['order'])
+    except:
+        pass
+    try : 
+        people = Filieres.objects.all().filter(id=id).update(abre= request.POST['abre'])
+    except:
+        pass
+    # <view logic>
+    return HttpResponse("updated succeffluy")
+
+@csrf_exempt
+def delete_modules(request):
+    data = request.POST
+    id  = data['id']
+    try : 
+        people = Filieres.objects.all().filter(id=id).delete()
+    except:
+        pass
+    # <view logic>
+    return HttpResponse("deleted succeffluy")
+    
