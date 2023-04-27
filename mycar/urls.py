@@ -23,5 +23,7 @@ from rest_framework import routers
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("", include("story.urls")),
+    path("", include("levels.urls")),
+
 
 ]
