@@ -68,6 +68,9 @@ def get_filliers(id):
     for peo in people:
         id = peo['id']
         peo['modules'] = get_modules(id)
+        for mod in peo['modules']:
+            id = mod['id']
+            mod['tutorials'] = get_tutorials(id)
     return people
 
 @csrf_exempt
@@ -173,9 +176,9 @@ def delete_modules(request):
 # Create tutorial views here.
 
 
-def get_modules(id):
-    _filiere = Filieres.objects.all().filter(id=id)[0]
-    people = Modules.objects.all().values().filter(filiere=_filiere)
+def get_tutorials(id):
+    _modules = Modules.objects.all().filter(id=id)[0]
+    people = Tutorial.objects.all().values().filter(Module=_modules)
     people = list(people)
     return people
 
