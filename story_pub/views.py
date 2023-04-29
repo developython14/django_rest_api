@@ -17,7 +17,7 @@ def get_stories( request):
         id = lev['id']
         ref = story.objects.all().filter(id=id)[0]
         files = story_files.objects.all().filter(story=ref)
-        files = [item.file for item in files]
+        files = [item.file.url for item in files]
         lev['files'] = files
     return JsonResponse(_levels ,safe=False)
 
@@ -32,7 +32,7 @@ def post_stories( request):
     new = story(title = title , page_de_garde =page_de , order = order)
     new.save()
     files = request.FILES
-    keys = files.keys()
+    keys = list(files.keys()).remove('page_de_gard')
     for i in keys :
         st = story_files(file = files[i] ,story = new )
         st.save()        
@@ -42,20 +42,38 @@ def post_stories( request):
 def put_stories( request):
         # <view logic>
     data = request.POST
-    order = data['order']
-    title = data['title']
-    abre = data['abre']
-    new = levels(title = title , abre =abre , order = order)
-    new.save()
+    id  = data['id']
+    try : 
+        people = story.objects.all().filter(id=id).update(title= request.POST['title'])
+    except:
+        pass
+    try : 
+        people = story.objects.all().filter(id=id).update(order= request.POST['order'])
+    except:
+        pass
+    try : 
+        people = story.objects.all().filter(id=id).update(page_de_garde= request.FILES['page_de_garde'])
+    except:
+        pass
+    # <view logic>
     return HttpResponse("updated succeffluy")
 
 @csrf_exempt
 def remove_stories(request):
         # <view logic>
     data = request.POST
-    order = data['order']
-    title = data['title']
-    abre = data['abre']
-    new = levels(title = title , abre =abre , order = order)
-    new.save()
+    id = data['id']
+    story  = story.objects.all().filter(id=id)
+    files = story_files.objects.all().filter(story=story).delete()
+    people = story.objects.all().filter(id=id).delete()
+    return HttpResponse("updated succeffluy")
+
+
+
+@csrf_exempt
+def remove_stories(request):
+        # <view logic>
+    data = request.POST
+    id = data['id']
+    story  = story_files.objects.all().filter(id=id)
     return HttpResponse("updated succeffluy")
