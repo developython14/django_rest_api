@@ -61,6 +61,7 @@ class Cours(models.Model):
     title = models.CharField(max_length=100,unique=True )
     pdf_url = models.CharField(max_length=100,unique=True )
     video_url = models.CharField(max_length=100,unique=True )
+    is_free = models.BooleanField(null=True)
     tutorial = models.ForeignKey(Tutorial , blank=True , on_delete=models.CASCADE)
 
     def __str__(self) -> str:

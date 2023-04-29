@@ -24,6 +24,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path("", include("story.urls")),
     path("", include("levels.urls")),
-
+    path("", include("story_pub.urls")),
 
 ]
