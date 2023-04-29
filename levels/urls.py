@@ -26,9 +26,16 @@ urlpatterns +=[
     path('delete_modules/',delete_modules, name="delete_modules"),
 ]
 
-#url patterfn about modulesss
+#url patterfn about tutorial
 urlpatterns +=[
     path('post_tutorial/',post_tutorial, name="post_tutorial"),
-    path('put_modules/',put_modules, name="put_modules"),
-    path('delete_modules/',delete_modules, name="delete_modules"),
+    path('put_tutorial/',put_tutorial, name="put_tutorial"),
+    path('delete_tutorial/',delete_tutorial, name="delete_tutorial"),
+]
+
+#url patterfn about Cours
+urlpatterns +=[
+    path('post_cours/',post_cours, name="post_cours"),
+    path('put_cours/',put_cours, name="put_cours"),
+    path('delete_cours/',delete_cours, name="delete_cours"),
 ]

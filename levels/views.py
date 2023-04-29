@@ -196,32 +196,85 @@ def post_tutorial(request):
     return HttpResponse("updated succeffluy")
 
 @csrf_exempt
-def put_modules(request):
+def put_tutorial(request):
     data = request.POST
     id  = data['id']
     try : 
-        people = Filieres.objects.all().filter(id=id).update(title= request.POST['title'])
+        people = Tutorial.objects.all().filter(id=id).update(title= request.POST['title'])
     except:
         pass
     try : 
-        people = Filieres.objects.all().filter(id=id).update(order= request.POST['order'])
+        people = Tutorial.objects.all().filter(id=id).update(order= request.POST['order'])
     except:
         pass
     try : 
-        people = Filieres.objects.all().filter(id=id).update(abre= request.POST['abre'])
+        people = Tutorial.objects.all().filter(id=id).update(abre= request.POST['abre'])
     except:
         pass
     # <view logic>
     return HttpResponse("updated succeffluy")
 
 @csrf_exempt
-def delete_modules(request):
+def delete_tutorial(request):
     data = request.POST
     id  = data['id']
     try : 
-        people = Modules.objects.all().filter(id=id).delete()
+        people = Tutorial.objects.all().filter(id=id).delete()
     except:
         pass
     # <view logic>
     return HttpResponse("deleted succeffluy")
-    
+
+
+# Create cours views here.
+
+
+def get_tutorials(id):
+    _modules = Modules.objects.all().filter(id=id)[0]
+    people = Tutorial.objects.all().values().filter(Module=_modules)
+    people = list(people)
+    return people
+
+
+@csrf_exempt
+def post_cours(request):
+        # <view logic>sss
+    data = request.POST
+    title = data['title']
+    pdf_url = data['pdf_url']
+    video_urls = data['video_url']
+    id = data['tutorial_id']
+    _filiere = Tutorial.objects.all().filter(id=id)[0]
+    new = Cours(title = title   ,tutorial = _filiere , video_url = 'fe' , pdf_url = 'ds')
+    new.save()
+    return HttpResponse("updated succeffluy")
+
+@csrf_exempt
+def put_cours(request):
+    data = request.POST
+    id  = data['id']
+    try : 
+        people = Cours.objects.all().filter(id=id).update(title= request.POST['title'])
+    except:
+        pass
+    try : 
+        people = Cours.objects.all().filter(id=id).update(order= request.POST['order'])
+    except:
+        pass
+    try : 
+        people = Cours.objects.all().filter(id=id).update(abre= request.POST['abre'])
+    except:
+        pass
+    # <view logic>
+    return HttpResponse("updated succeffluy")
+
+@csrf_exempt
+def delete_cours(request):
+    data = request.POST
+    id  = data['id']
+    try : 
+        people = Cours.objects.all().filter(id=id).delete()
+    except:
+        pass
+    # <view logic>
+    return HttpResponse("deleted succeffluy")
