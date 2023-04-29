@@ -17,7 +17,7 @@ def get_stories( request):
         id = lev['id']
         ref = story.objects.all().filter(id=id)[0]
         files = story_files.objects.all().filter(story=ref)
-        files = list(files)
+        files = [item.file for item in files]
         lev['files'] = files
     return JsonResponse(_levels ,safe=False)
 
@@ -31,6 +31,11 @@ def post_stories( request):
     page_de = request.FILES['page_de_gard']
     new = story(title = title , page_de_garde =page_de , order = order)
     new.save()
+    files = request.FILES
+    keys = files.keys()
+    for i in keys :
+        st = story_files(file = files[i] ,story = new )
+        st.save()        
     return HttpResponse("updated succeffluy")
 
 @csrf_exempt

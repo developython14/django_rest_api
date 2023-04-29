@@ -6,7 +6,7 @@ from django.db import models
 class story(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     order = models.IntegerField(default=0)
-    title = models.CharField(max_length=100,unique=True )
+    title = models.CharField(max_length=100,default='' )
     page_de_garde = models.ImageField(null=True,upload_to='image_stories', default='')
 
     class Meta:
