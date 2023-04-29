@@ -49,6 +49,8 @@ class Modules(models.Model):
 class Tutorial(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     title = models.CharField(max_length=100,unique=True )
+    old_prix = models.CharField(max_length=100,unique=True )
+    new_prix = models.CharField(max_length=100,unique=True )
     Module = models.ForeignKey(Modules , blank=True , on_delete=models.CASCADE)
     def __str__(self) -> str:
         return self.title +'ha'+ str(self.title)

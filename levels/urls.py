@@ -25,3 +25,10 @@ urlpatterns +=[
     path('put_modules/',put_modules, name="put_modules"),
     path('delete_modules/',delete_modules, name="delete_modules"),
 ]
+
+#url patterfn about modulesss
+urlpatterns +=[
+    path('post_tutorial/',post_tutorial, name="post_tutorial"),
+    path('put_modules/',put_modules, name="put_modules"),
+    path('delete_modules/',delete_modules, name="delete_modules"),
+]

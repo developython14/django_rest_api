@@ -140,6 +140,7 @@ def post_modules(request):
     new.save()
     return HttpResponse("updated succeffluy")
 
+
 @csrf_exempt
 def put_modules(request):
     data = request.POST
@@ -182,15 +183,15 @@ def get_tutorials(id):
     people = list(people)
     return people
 
+
 @csrf_exempt
-def post_modules(request):
+def post_tutorial(request):
         # <view logic>
     data = request.POST
     title = data['title']
-    id = data['filiere_id']
-    icon_title = request.FILES['icon_title']
-    _filiere = Filieres.objects.all().filter(id=id)[0]
-    new = Modules(title = title ,icon_title =icon_title  ,filiere = _filiere)
+    id = data['module_id']
+    _filiere = Modules.objects.all().filter(id=id)[0]
+    new = Tutorial(title = title   ,Module = _filiere , old_prix = 'fe' , new_prix = 'ds')
     new.save()
     return HttpResponse("updated succeffluy")
 
