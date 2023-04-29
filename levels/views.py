@@ -241,8 +241,8 @@ def post_cours(request):
         # <view logic>sss
     data = request.POST
     title = data['title']
-    pdf_url = data['pdf_url']
-    video_urls = data['video_url']
+    #pdf_url = data['pdf_url']
+    #video_urls = data['video_url']
     id = data['tutorial_id']
     _filiere = Tutorial.objects.all().filter(id=id)[0]
     new = Cours(title = title   ,tutorial = _filiere , video_url = 'fe' , pdf_url = 'ds')
