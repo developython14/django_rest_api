@@ -44,3 +44,23 @@ class Modules(models.Model):
 
     def __str__(self) -> str:
         return self.title +'ha'+ str(self.title)
+    
+
+class Tutorial(models.Model):
+    created = models.DateTimeField(auto_now_add=True)
+    title = models.CharField(max_length=100,unique=True )
+    Module = models.ForeignKey(Modules , blank=True , on_delete=models.CASCADE)
+    def __str__(self) -> str:
+        return self.title +'ha'+ str(self.title)
+    
+
+class Cours(models.Model):
+    created = models.DateTimeField(auto_now_add=True)
+    title = models.CharField(max_length=100,unique=True )
+    pdf_url = models.CharField(max_length=100,unique=True )
+    video_url = models.CharField(max_length=100,unique=True )
+    tutorial = models.ForeignKey(Tutorial , blank=True , on_delete=models.CASCADE)
+
+    def __str__(self) -> str:
+        return self.title +'ha'+ str(self.title)
+
