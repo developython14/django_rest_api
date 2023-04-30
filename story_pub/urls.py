@@ -7,4 +7,5 @@ urlpatterns =[
     path('post_stories/',post_stories, name="post_stories"),
     path('put_stories/',put_stories, name="put_stories"),
     path('remove_stories/',remove_stories, name="remove_stories"),
+    path('remove_stories_item/',remove_stories_item, name="remove_stories_item"),
 ]

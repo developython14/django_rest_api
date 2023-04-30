@@ -71,7 +71,7 @@ def remove_stories(request):
 
 
 @csrf_exempt
-def remove_stories(request):
+def remove_stories_item(request):
         # <view logic>
     data = request.POST
     id = data['id']
