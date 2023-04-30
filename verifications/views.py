@@ -18,8 +18,9 @@ def student_login( request):
         use = User.objects.get(username= username)
         if use.password == password:
             student = Student.objects.get(user =  use)
+            print(student)
             if device_id ==  student.device_id:
-                if student.is_accepeted ==True:
+                if student.is_accepeted == True:
                     JsonResponse({'message':'succes'})
                 else:
                     JsonResponse({'message':'everythings is fine but your account not yet accepted'})
@@ -29,7 +30,7 @@ def student_login( request):
             JsonResponse({'message':'invalid information'})
     except :
         pass      
-    return HttpResponse('suucee')
+    return JsonResponse({'message':'uknow error'})
 
 
 # Create levels views here.
