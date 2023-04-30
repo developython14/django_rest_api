@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'story',
     'snippets',
     'levels',
-    'story_pub'
+    'story_pub',
+    'verifications'
 ]
 
 MIDDLEWARE = [
