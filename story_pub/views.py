@@ -9,7 +9,7 @@ from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 
 # Create levels views here.
-
+@csrf_exempt
 def get_stories( request):
     _levels = story.objects.all().values()
     _levels = list(_levels)
@@ -82,8 +82,38 @@ def remove_stories_item(request):
 
 # Create your pub here.
 
-
+@csrf_exempt
 def get_pubs( request):
     _levels = Pub.objects.all().values()
     _levels = list(_levels)
     return JsonResponse(_levels ,safe=False)
+
+@csrf_exempt
+def post_pubs( request):
+    data = request.POST
+    url = data['url']
+    image = request.FILES['image']
+    new = Pub(url = url , image_de_garde = image)
+    new.save()
+    return  HttpResponse("updated succeffluy")
+
+@csrf_exempt
+def put_pubs( request):
+    data = request.POST
+    id = data['id']
+    try : 
+        people = Pub.objects.all().filter(id=id).update(url= request.POST['url'])
+    except:
+        pass
+    try : 
+        people = Pub.objects.all().filter(id=id).update(order= request.FILES['image'])
+    except:
+        pass
+    return  HttpResponse("updated succeffluy")
+
+@csrf_exempt
+def remove_pubs( request):
+    data = request.POST
+    id = data['id']
+    Pub.objects.all().filter(id=id).delete()
+    return  HttpResponse("updated succeffluy")
