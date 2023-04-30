@@ -77,3 +77,13 @@ def remove_stories_item(request):
     id = data['id']
     story  = story_files.objects.all().filter(id=id)
     return HttpResponse("updated succeffluy")
+
+
+
+# Create your pub here.
+
+
+def get_pubs( request):
+    _levels = Pub.objects.all().values()
+    _levels = list(_levels)
+    return JsonResponse(_levels ,safe=False)
