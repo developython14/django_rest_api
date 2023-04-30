@@ -18,19 +18,20 @@ def student_login( request):
         use = User.objects.get(username= username)
         if use.password == password:
             student = Student.objects.get(user =  use)
-            print(student)
+            if student.device_id == '0':
+                student.device_id = device_id
+                student.save()
             if device_id ==  student.device_id:
                 if student.is_accepeted == True:
-                    JsonResponse({'message':'succes'})
+                    return JsonResponse({'message':'succes'})
                 else:
-                    JsonResponse({'message':'everythings is fine but your account not yet accepted'})
+                    
+                    return JsonResponse({'message':'everythings is fine but your account not yet accepted'})
             else :
-                JsonResponse({'message':'warning you are use another device'})
-        else:
-            JsonResponse({'message':'invalid information'})
+                return JsonResponse({'message':'warning you are use another device'})
     except :
         pass      
-    return JsonResponse({'message':'uknow error'})
+    return JsonResponse({'message':'invalid information'})
 
 
 # Create levels views here.
@@ -65,7 +66,7 @@ def put_account(request):
     except:
         pass
     # <view logic>
-    return HttpResponse("updated succeffluy")
+    return JsonResponse({'message':'updated succeffuly'})
 
 # Create levels views here.
 @csrf_exempt
@@ -73,4 +74,4 @@ def remove_account(request):
     data = request.POST
     id  = data['id']
     story  = Student.objects.all().filter(id=id).delete()
-    return HttpResponse("updated succeffluy")
+    return JsonResponse({'message':'Created succeffuly'})
