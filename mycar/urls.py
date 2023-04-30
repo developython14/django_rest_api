@@ -25,5 +25,6 @@ urlpatterns = [
     path("", include("story.urls")),
     path("", include("levels.urls")),
     path("", include("story_pub.urls")),
+    path("", include("verifications.urls")),
 
 ]
