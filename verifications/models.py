@@ -11,6 +11,7 @@ class Student(models.Model):
     device_id = models.CharField(max_length=100,default='' )
     is_accepeted = models.BooleanField(default=False)
     user = models.ForeignKey(User,on_delete=models.CASCADE)
+    profile_picture = models.ImageField(null=True,upload_to='profile_student_image', default='')
 
     def __str__(self) -> str:
         return self.user.username
