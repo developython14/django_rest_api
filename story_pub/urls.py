@@ -5,6 +5,6 @@ from .views import *
 urlpatterns =[
     path('get_stories/',get_stories, name="get_stories"),
     path('post_stories/',post_stories, name="post_stories"),
-    #path('put_level/',put_levels, name="put_level"),
-    #path('delete_level/',delete_levels, name="delete_level"),
+    path('put_stories/',put_stories, name="put_stories"),
+    path('remove_stories/',remove_stories, name="remove_stories"),
 ]

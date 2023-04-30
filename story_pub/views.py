@@ -32,7 +32,7 @@ def post_stories( request):
     new = story(title = title , page_de_garde =page_de , order = order)
     new.save()
     files = request.FILES
-    keys = list(files.keys()).remove('page_de_gard')
+    keys = files.keys()
     for i in keys :
         st = story_files(file = files[i] ,story = new )
         st.save()        
