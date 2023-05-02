@@ -22,6 +22,8 @@ def student_login( request):
                 student.device_id = device_id
                 student.save()
             if device_id ==  student.device_id:
+                print('user' , student.is_accepeted)
+                print('condition' ,student.is_accepeted ==True )
                 if student.is_accepeted == True:
                     return JsonResponse({'message':'succes'})
                 else:
