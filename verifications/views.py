@@ -56,19 +56,21 @@ def create_account( request):
 # Create levels views here.
 @csrf_exempt
 def put_account(request):
+    print('REQUEST FINE')
     data = request.POST
     id  = data['id']
-    device_id  = data['device_id']
+    peop = Student.objects.all().filter(id=id)
+    print(peop)
     try : 
-        people = Student.objects.all().filter(id=id).update(profile_picture= request.FILES['image'])
+        people = peop.update(profile_picture= request.FILES['image'])
     except:
         pass
     try : 
-        people = Student.objects.all().filter(id=id).update(device_id=device_id)
+        people =peop.update(device_id=data['device_id'])
     except:
         pass
     # <view logic>
-    return JsonResponse({'message':'updated succeffuly'})
+    return JsonResponse({'message':'updated succeffuly' ,'image':peop[0].profile_picture.url})
 
 # Create levels views here.
 @csrf_exempt
